@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+}
+
+#map {
+  height: 100vh;
+  width: 100%;
+}
+
+#controls {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+}
+
+#controls select {
+  padding: 5px;
+  font-size: 14px;
+}
+
+#legend {
+  position: absolute;
+  bottom: 30px;
+  right: 10px;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+}
+
+#legend h4 {
+  margin: 0 0 10px 0;
+  text-align: center;
+  font-weight: normal;
+}
+
+#legend .filter-item {
+  display: block;
+  margin-bottom: 8px;
+}
+
+#legend .filter-item label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+
+#legend .color-box {
+  width: 14px;
+  height: 14px;
+  border: none;
+  margin-right: 8px;
+  display: inline-block;
+  border-radius: 50%;
+}
+
+#legend input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.select-all-container {
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #ddd;
+}

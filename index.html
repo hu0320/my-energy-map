@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>中国能源与工业地图</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="controls">
+      <label for="department-select">选择部门: </label>
+      <select id="department-select">
+        <option value="power">电力</option>
+        <option value="steel">钢铁</option>
+        <option value="cement">水泥</option>
+      </select>
+    </div>
+    <div id="legend">
+      <h4>燃料类型</h4>
+      <div id="type-filters"></div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="geo-data.js"></script>
+    <script src="details-data.js"></script>
+    <script src="map-logic.js"></script>
+  </body>
+</html>
