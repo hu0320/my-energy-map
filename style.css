@@ -25,7 +25,7 @@ body {
 }
 #legend {
   position: absolute;
-  bottom: 10px; /* 改动：从 30px 减小到 10px，使其下移 */
+  bottom: 10px;
   right: 10px;
   z-index: 1000;
   background-color: rgba(255, 255, 255, 0.9);
