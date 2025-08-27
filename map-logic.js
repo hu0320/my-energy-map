@@ -4,6 +4,7 @@ const map = L.map("map", {
   maxBounds: L.latLngBounds(L.latLng(-90, -180), L.latLng(90, 180)),
   maxBoundsViscosity: 1.0,
   zoomControl: false,
+  attributionControl: false,
 }).setView([35.8617, 104.1954], 5);
 
 L.control
@@ -23,11 +24,11 @@ L.control
 const tiandituKey = "3767d31e6dfc63797664e73af20dbbd7";
 L.tileLayer(
   `https://t0.tianditu.gov.cn/vec_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}&tk=${tiandituKey}`,
-  { attribution: "天地图" }
+  { attribution: "" }
 ).addTo(map);
 L.tileLayer(
   `https://t0.tianditu.gov.cn/cva_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cva&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}&tk=${tiandituKey}`,
-  { attribution: "天地图" }
+  { attribution: "" }
 ).addTo(map);
 
 const departmentSelect = document.getElementById("department-select");
