@@ -1,11 +1,8 @@
-//
-// 坐标转换 WGS84, GCJ02, BD09
-//
 const coordtransform = (function () {
   const x_pi = (3.14159265358979324 * 3000.0) / 180.0;
-  const pi = 3.1415926535897932384626; // π
-  const a = 6378245.0; // 长半轴
-  const ee = 0.00669342162296594323; // 偏心率平方
+  const pi = 3.1415926535897932384626;
+  const a = 6378245.0;
+  const ee = 0.00669342162296594323;
 
   function transformlat(lng, lat) {
     let ret =
@@ -58,12 +55,6 @@ const coordtransform = (function () {
   }
 
   return {
-    /**
-     * WGS84转GCj02
-     * @param lng
-     * @param lat
-     * @returns {*[]}
-     */
     wgs84togcj02: function (lng, lat) {
       if (out_of_china(lng, lat)) {
         return [lng, lat];

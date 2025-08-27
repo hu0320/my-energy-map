@@ -1,13 +1,11 @@
-// 1. 初始化地图
 const map = L.map("map", {
   minZoom: 2,
   maxZoom: 18,
   maxBounds: L.latLngBounds(L.latLng(-90, -180), L.latLng(90, 180)),
   maxBoundsViscosity: 1.0,
-  zoomControl: false, // <-- 第1处改动：禁用默认的左上角缩放控件
+  zoomControl: false,
 }).setView([35.8617, 104.1954], 5);
 
-// --- 第2处改动：手动创建缩放控件并指定位置为右上角 ---
 L.control
   .zoom({
     position: "topright",
@@ -16,13 +14,12 @@ L.control
 
 L.control
   .scale({
-    position: "bottomleft", // 位置在左下角
-    metric: true, // 使用米和公里
-    imperial: false, // 不使用英里和英尺
+    position: "bottomleft",
+    metric: true,
+    imperial: false,
   })
   .addTo(map);
 
-// 2. 配置天地图底图
 const tiandituKey = "3767d31e6dfc63797664e73af20dbbd7";
 L.tileLayer(
   `https://t0.tianditu.gov.cn/vec_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}&tk=${tiandituKey}`,
@@ -33,7 +30,6 @@ L.tileLayer(
   { attribution: "天地图" }
 ).addTo(map);
 
-// 3. 获取页面上的HTML元素
 const departmentSelect = document.getElementById("department-select");
 const typeFiltersContainer = document.getElementById("type-filters");
 const totalCountEl = document.getElementById("total-count");
@@ -42,7 +38,6 @@ const legendUnitEl = document.getElementById("legend-unit");
 const filterTitleEl = document.getElementById("filter-title");
 let dataLayer = L.layerGroup().addTo(map);
 
-// 4. 核心绘图函数
 function renderMap() {
   dataLayer.clearLayers();
   const selectedDepartment = departmentSelect.value;
@@ -85,14 +80,12 @@ function renderMap() {
       }
       const radius = point.capacity * radiusMultiplier;
 
-      // === 坐标转换核心逻辑 ===
       const wgsCoords = point.coords;
       const gcjCoordsArray = coordtransform.wgs84togcj02(
         wgsCoords[1],
         wgsCoords[0]
       );
       const leafletCoords = [gcjCoordsArray[1], gcjCoordsArray[0]];
-      // ==========================
 
       const circle = L.circle(leafletCoords, {
         radius: radius,
@@ -116,7 +109,6 @@ function renderMap() {
   });
 }
 
-// 5. 更新筛选框并绑定所有事件的函数
 function updateFiltersAndEvents() {
   const selectedDepartment = departmentSelect.value;
   const departmentData = geoData[selectedDepartment];
@@ -157,7 +149,6 @@ function updateFiltersAndEvents() {
   });
 }
 
-// 6. 绑定下拉菜单的事件监听和页面首次加载
 departmentSelect.addEventListener("change", () => {
   updateFiltersAndEvents();
   renderMap();

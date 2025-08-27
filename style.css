@@ -79,7 +79,7 @@ body {
 }
 #size-legend {
   position: absolute;
-  bottom: 40px; /* 改动：从 30px 增加到 60px，为比例尺留出空间 */
+  bottom: 40px;
   left: 10px;
   z-index: 1000;
   background-color: rgba(255, 255, 255, 0.9);
@@ -89,22 +89,15 @@ body {
   border: none;
   text-align: center;
 }
-
-/* --- 这里是修改的地方 (开始) --- */
-
 #size-legend h4 {
-  margin: 0 0 5px 0; /* 减小标题和单位之间的间距 */
-  font-weight: normal; /* 取消粗体 */
-  font-size: 14px; /* 设置一个统一的字体大小 */
+  margin: 0 0 5px 0;
+  font-weight: normal;
+  font-size: 14px;
 }
-
 #legend-unit {
-  font-size: 14px; /* 设置一个统一的字体大小 */
+  font-size: 14px;
   color: #555;
 }
-
-/* --- 这里是修改的地方 (结束) --- */
-
 .legend-scale {
   display: flex;
   align-items: center;
