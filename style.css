@@ -25,7 +25,7 @@ body {
 }
 #legend {
   position: absolute;
-  bottom: 30px;
+  bottom: 10px; /* 改动：从 30px 减小到 10px，使其下移 */
   right: 10px;
   z-index: 1000;
   background-color: rgba(255, 255, 255, 0.9);
@@ -79,7 +79,7 @@ body {
 }
 #size-legend {
   position: absolute;
-  bottom: 40px;
+  bottom: 60px;
   left: 10px;
   z-index: 1000;
   background-color: rgba(255, 255, 255, 0.9);
