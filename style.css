@@ -4,12 +4,10 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
 }
-
 #map {
   height: 100vh;
   width: 100%;
 }
-
 #controls {
   position: absolute;
   top: 10px;
@@ -17,15 +15,14 @@ body {
   z-index: 1000;
   background-color: #fff;
   padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+  border-radius: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  border: none;
 }
-
 #controls select {
   padding: 5px;
   font-size: 14px;
 }
-
 #legend {
   position: absolute;
   bottom: 30px;
@@ -33,28 +30,25 @@ body {
   z-index: 1000;
   background-color: rgba(255, 255, 255, 0.9);
   padding: 15px;
-  border-radius: 5px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+  border-radius: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  border: none;
 }
-
 #legend h4 {
   margin: 0 0 10px 0;
   text-align: center;
   font-weight: normal;
 }
-
 #legend .filter-item {
   display: block;
   margin-bottom: 8px;
 }
-
 #legend .filter-item label {
   cursor: pointer;
   display: flex;
   align-items: center;
   font-size: 16px;
 }
-
 #legend .color-box {
   width: 14px;
   height: 14px;
@@ -63,13 +57,73 @@ body {
   display: inline-block;
   border-radius: 50%;
 }
-
 #legend input[type="checkbox"] {
   margin-right: 8px;
 }
-
 .select-all-container {
   padding-bottom: 8px;
   margin-bottom: 12px;
   border-bottom: 1px solid #ddd;
+}
+#total-count-display {
+  position: absolute;
+  top: 65px;
+  left: 10px;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px 10px;
+  border-radius: 0;
+  font-size: 14px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  border: none;
+}
+#size-legend {
+  position: absolute;
+  bottom: 40px; /* 改动：从 30px 增加到 60px，为比例尺留出空间 */
+  left: 10px;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 10px;
+  border-radius: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  border: none;
+  text-align: center;
+}
+
+/* --- 这里是修改的地方 (开始) --- */
+
+#size-legend h4 {
+  margin: 0 0 5px 0; /* 减小标题和单位之间的间距 */
+  font-weight: normal; /* 取消粗体 */
+  font-size: 14px; /* 设置一个统一的字体大小 */
+}
+
+#legend-unit {
+  font-size: 14px; /* 设置一个统一的字体大小 */
+  color: #555;
+}
+
+/* --- 这里是修改的地方 (结束) --- */
+
+.legend-scale {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 5px;
+}
+.legend-circle {
+  border-radius: 50%;
+  background-color: #999;
+  opacity: 0.6;
+  margin: 0 5px;
+}
+.leaflet-top.leaflet-right {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.leaflet-bar a,
+.leaflet-bar {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border: none;
 }

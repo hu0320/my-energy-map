@@ -8,10 +8,19 @@
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet.markercluster@1.5.1/dist/MarkerCluster.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet.markercluster@1.5.1/dist/MarkerCluster.Default.css"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div id="map"></div>
+
     <div id="controls">
       <label for="department-select">选择部门: </label>
       <select id="department-select">
@@ -20,14 +29,25 @@
         <option value="cement">水泥</option>
       </select>
     </div>
+
     <div id="legend">
-      <h4>燃料类型</h4>
+      <h4 id="filter-title">燃料类型</h4>
       <div id="type-filters"></div>
     </div>
 
+    <div id="total-count-display">
+      总计: <span id="total-count">0</span> 个数据点
+    </div>
+
+    <div id="size-legend">
+      <h4 id="legend-title">产能大小</h4>
+
+      <div id="legend-unit" style="margin-top: 5px">单位: Capacity (MW)</div>
+    </div>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.1/dist/leaflet.markercluster.js"></script>
     <script src="geo-data.js"></script>
-    <script src="details-data.js"></script>
+    <script src="coord-transform.js"></script>
     <script src="map-logic.js"></script>
   </body>
 </html>
