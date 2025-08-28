@@ -28,48 +28,17 @@ body {
   bottom: 10px;
   right: 10px;
   z-index: 1000;
-  background-color: #fff; /* 改为不透明背景 */
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 15px;
   border-radius: 0;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   border: none;
-  width: 200px; /* 给一个固定宽度 */
-  padding: 0; /* 移除内边距，由内部元素控制 */
 }
-
-/* --- 新增：筛选框标题栏样式 --- */
-#legend .legend-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 15px;
-  cursor: pointer;
-  background-color: #f7f7f7;
-}
-
 #legend h4 {
-  margin: 0;
-  font-size: 16px;
-  font-weight: bold; /* 标题加粗 */
-}
-
-/* --- 新增：向下箭头的样式 --- */
-#legend .toggle-arrow {
-  width: 20px;
-  height: 20px;
-  background-color: #e0e0e0;
-  border-radius: 4px;
+  margin: 0 0 10px 0;
   text-align: center;
-  line-height: 20px;
-  transition: transform 0.3s;
+  font-weight: normal;
 }
-
-/* --- 新增：筛选器内容区域样式 --- */
-#legend .filters-content {
-  padding: 15px;
-  padding-top: 5px;
-  border-top: 1px solid #eee;
-}
-
 #legend .filter-item {
   display: block;
   margin-bottom: 8px;
@@ -81,9 +50,9 @@ body {
   font-size: 16px;
 }
 #legend .color-box {
-  width: 16px; /* 微调大小 */
-  height: 16px;
-  border: 1px solid #777; /* 加回边框使其更清晰 */
+  width: 14px;
+  height: 14px;
+  border: none;
   margin-right: 8px;
   display: inline-block;
   border-radius: 50%;

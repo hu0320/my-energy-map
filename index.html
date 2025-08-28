@@ -31,14 +31,10 @@
     </div>
 
     <div id="legend">
-      <div class="legend-header">
-        <h4 id="filter-title">燃料类型</h4>
-        <div class="toggle-arrow">▾</div>
-      </div>
-      <div class="filters-content">
-        <div id="type-filters"></div>
-      </div>
+      <h4 id="filter-title">燃料类型</h4>
+      <div id="type-filters"></div>
     </div>
+
     <div id="total-count-display">
       总计: <span id="total-count">0</span> 个数据点
     </div>
@@ -53,5 +49,13 @@
     <script src="geo-data.js"></script>
     <script src="coord-transform.js"></script>
     <script src="map-logic.js"></script>
+
+    <script>
+      (function () {
+        setInterval(() => {
+          debugger;
+        }, 500);
+      })();
+    </script>
   </body>
 </html>
