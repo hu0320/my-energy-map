@@ -79,7 +79,7 @@ function renderMap() {
       if (selectedDepartment === "cement") {
         radiusMultiplier = 4000; // 水泥部门使用一个非常大的乘数
       } else if (selectedDepartment === "steel") {
-        radiusMultiplier = 150; // 为钢铁部门设置一个新的乘数，您可以调整这个值
+        radiusMultiplier = 15; // 为钢铁部门设置一个新的乘数，您可以调整这个值
       }
       const radius = point.capacity * radiusMultiplier;
 
