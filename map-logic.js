@@ -79,7 +79,7 @@ function renderMap() {
       if (selectedDepartment === "cement") {
         radiusMultiplier = 4000;
       } else if (selectedDepartment === "steel") {
-        radiusMultiplier = 10;
+        radiusMultiplier = 5;
       }
       const radius = point.capacity * radiusMultiplier;
 
