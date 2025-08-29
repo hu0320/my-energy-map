@@ -74,12 +74,12 @@ function renderMap() {
       point.coords.length === 2
     ) {
       const color = typeColors[point.type] || "#0578e4ff";
-      let radiusMultiplier = 30; // 默认乘数 (电力部门使用)
+      let radiusMultiplier = 30;
 
       if (selectedDepartment === "cement") {
-        radiusMultiplier = 4000; // 水泥部门使用一个非常大的乘数
+        radiusMultiplier = 4000;
       } else if (selectedDepartment === "steel") {
-        radiusMultiplier = 10; // 为钢铁部门设置一个新的乘数，您可以调整这个值
+        radiusMultiplier = 10;
       }
       const radius = point.capacity * radiusMultiplier;
 
