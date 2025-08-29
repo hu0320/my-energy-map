@@ -73,7 +73,7 @@ function renderMap() {
       Array.isArray(point.coords) &&
       point.coords.length === 2
     ) {
-      const color = typeColors[point.type] || "#0084ffff";
+      const color = typeColors[point.type] || "#0578e4ff";
       let radiusMultiplier = 30; // 默认乘数 (电力部门使用)
 
       if (selectedDepartment === "cement") {
@@ -127,7 +127,7 @@ function updateFiltersAndEvents() {
   typeFiltersContainer.innerHTML = selectAllHTML;
   const types = [...new Set(departmentData.map((p) => p.type))];
   types.forEach((type) => {
-    const color = typeColors[type] || "#ff0000";
+    const color = typeColors[type] || "#0578e4ff";
     const filterItem = document.createElement("div");
     filterItem.className = "filter-item";
     filterItem.innerHTML = `<label><input type="checkbox" class="type-checkbox" value="${type}" checked><span class="color-box" style="background-color: ${color};"></span>${type}</label>`;
