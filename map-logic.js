@@ -30,6 +30,17 @@ L.tileLayer(
   { attribution: "" }
 ).addTo(map);
 
+const typeColors = {
+  // 电力部门
+  太阳能: "#f9951cff",
+  风能: "#56a0d3",
+  煤电: "#f5d31066",
+  生物质能: "#228b22",
+  // 其他部门
+  粗钢: "#82A683",
+  水泥: "#DEB887",
+};
+
 const departmentSelect = document.getElementById("department-select");
 const typeFiltersContainer = document.getElementById("type-filters");
 const totalCountEl = document.getElementById("total-count");
@@ -38,15 +49,24 @@ const legendUnitEl = document.getElementById("legend-unit");
 const filterTitleEl = document.getElementById("filter-title");
 let dataLayer = L.layerGroup().addTo(map);
 
+// 数据加载的映射和缓存
+const dataLoaders = {
+  power: () => import("./data/powerData.js").then((m) => m.powerData),
+  steel: () => import("./data/steelData.js").then((m) => m.steelData),
+  cement: () => import("./data/cementData.js").then((m) => m.cementData),
+};
+const loadedDataCache = {};
+let currentDepartmentData = [];
+
 function renderMap() {
   dataLayer.clearLayers();
   const selectedDepartment = departmentSelect.value;
-  const departmentData = geoData[selectedDepartment];
+  const departmentData = currentDepartmentData;
   const checkedTypes = Array.from(
     document.querySelectorAll("#type-filters .type-checkbox:checked")
   ).map((input) => input.value);
 
-  if (!departmentData) {
+  if (!departmentData || departmentData.length === 0) {
     totalCountEl.textContent = 0;
     return;
   }
@@ -58,7 +78,7 @@ function renderMap() {
 
   if (selectedDepartment === "power") {
     legendTitleEl.textContent = "发电容量";
-    legendUnitEl.textContent = "单位: Capacity (MW)";
+    legendUnitEl.textContent = "单位:  兆瓦(MW)";
   } else if (selectedDepartment === "cement") {
     legendTitleEl.textContent = "水泥产能";
     legendUnitEl.textContent = "单位: 百万吨/年";
@@ -112,15 +132,32 @@ function renderMap() {
   });
 }
 
-function updateFiltersAndEvents() {
+async function updateFiltersAndEvents() {
   const selectedDepartment = departmentSelect.value;
-  const departmentData = geoData[selectedDepartment];
+  let departmentData;
+
+  // 检查缓存，如果已加载，则直接使用
+  if (loadedDataCache[selectedDepartment]) {
+    departmentData = loadedDataCache[selectedDepartment];
+  } else {
+    // 动态导入数据，并缓存
+    try {
+      departmentData = await dataLoaders[selectedDepartment]();
+      loadedDataCache[selectedDepartment] = departmentData;
+      console.log(`成功加载并缓存 ${selectedDepartment} 部门数据.`);
+    } catch (error) {
+      console.error(`加载 ${selectedDepartment} 部门数据失败:`, error);
+      departmentData = [];
+    }
+  }
+
+  currentDepartmentData = departmentData;
 
   typeFiltersContainer.innerHTML = "";
-  if (!departmentData) {
-    renderMap();
+  if (!departmentData || departmentData.length === 0) {
     return;
   }
+
   filterTitleEl.textContent =
     selectedDepartment === "power" ? "燃料类型" : "类型筛选";
   const selectAllHTML = `<div class="filter-item select-all-container"><label><input type="checkbox" id="select-all" checked>全选</label></div>`;
@@ -150,15 +187,16 @@ function updateFiltersAndEvents() {
       renderMap();
     });
   });
+
+  // 确保在数据加载和筛选器更新后才调用 renderMap
+  renderMap();
 }
 
 departmentSelect.addEventListener("change", () => {
   updateFiltersAndEvents();
-  renderMap();
 });
 
 function initialLoad() {
   updateFiltersAndEvents();
-  renderMap();
 }
 initialLoad();
